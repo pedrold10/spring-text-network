@@ -4,17 +4,18 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "t_user")
 public class User {
     @Id
-    public Long userID;
-    public String userName;
-    public String name;
-    public Long followers;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long userID;
+    private String userName;
+    private String name;
+    private Long followers;
 }

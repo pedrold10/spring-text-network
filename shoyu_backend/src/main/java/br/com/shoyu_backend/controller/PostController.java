@@ -1,12 +1,11 @@
 package br.com.shoyu_backend.controller;
 
 import br.com.shoyu_backend.model.entities.Post;
+import br.com.shoyu_backend.model.entities.User;
 import br.com.shoyu_backend.model.services.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,5 +26,11 @@ public class PostController{
     @RequestMapping(value = "/{id}/posts", method = RequestMethod.GET)
     public List<Post> postsPorId(@PathVariable Long id){
         return postService.postPorUserID(id);
+    }
+
+    @RequestMapping("/")
+    public ResponseEntity<Post> createPost(@RequestBody Post post){
+        Post newPost = postService.savePost(post);
+        return ResponseEntity.ok(newPost);
     }
 }

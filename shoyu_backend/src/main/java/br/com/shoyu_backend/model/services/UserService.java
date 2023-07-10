@@ -25,4 +25,8 @@ public class UserService {
     public User userPorId(long id){
         return userRepository.getReferenceById(id);
     }
+
+    public User saveUser(User user){
+        return userRepository.save(user);
+    }
 }

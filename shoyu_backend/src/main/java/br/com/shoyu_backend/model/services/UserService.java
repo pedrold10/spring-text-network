@@ -21,4 +21,8 @@ public class UserService {
     public List<User> listUsers(){
         return userRepository.findAll();
     }
+
+    public User userPorId(long id){
+        return userRepository.getReferenceById(id);
+    }
 }

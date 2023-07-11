@@ -1,0 +1,13 @@
+<h1>Bem vindo ao shoyu</h1>
+<div class="posts ml-5 mr-5">
+    <div class="post mt-2 mr-5" *ngFor="let post of posts">
+        <div class="post-body ml-5 pt-2">
+            <p>@{{post.user.userName}}</p>
+            <p>{{post.content}}</p>
+        </div>
+    </div>
+</div>
+<button class="novo btn btn-primary m-5 fixed-bottom-right mr-3 mb-3" routerLink="/new">
+    <mat-icon>add_circle</mat-icon>
+</button>
+<router-outlet></router-outlet>

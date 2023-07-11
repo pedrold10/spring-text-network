@@ -1,0 +1,16 @@
+.posts{
+    display: flex;
+    flex-direction: column;
+}
+.post{
+    border: 1px solid black;
+}
+.novo{
+    border-radius: 50%;
+    
+}
+.fixed-bottom-right{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}

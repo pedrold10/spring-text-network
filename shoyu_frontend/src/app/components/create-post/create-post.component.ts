@@ -17,6 +17,12 @@ export class CreatePostComponent {
       userName: "gold10",
       name: "Gabriel",
       followers: 99
+    },
+    {
+      id: 2,
+      userName: "pedroldZ",
+      name: "Pedro",
+      followers: 99
     }
   ]
 
@@ -35,10 +41,19 @@ export class CreatePostComponent {
     private router: Router) { }
 
   createPost(){
+    const selectedUser = this.users.find(user => user.id === this.createPostRequest.user.id);
+  
+    if (selectedUser) {
+      this.createPostRequest.user.id = selectedUser.id;
+      this.createPostRequest.user.name = selectedUser.name;
+      this.createPostRequest.user.userName = selectedUser.userName;
+      this.createPostRequest.user.followers = selectedUser.followers;
+    }
+
     this.postService.createPost(this.createPostRequest)
     .subscribe(
       (post) => {
-        this.router.navigate(["posts"])
+        this.router.navigate(["feed"])
       }
     )
   }

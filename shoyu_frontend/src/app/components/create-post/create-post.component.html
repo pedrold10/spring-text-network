@@ -1,1 +1,10 @@
-<p>create-post works!</p>
+<form #form="ngForm" (ngSubmit)="createPost()" class="post-form row m-5">
+    <div class="col-sm-6">
+        <select *ngFor="let user of users" [(ngModel)]="createPostRequest.user.id" name="Selecionar usuário" id="">
+            <option value="">{{user.userName}}</option>
+        </select>
+        <textarea [(ngModel)]="createPostRequest.content" class="form-control"></textarea>
+        <button type="submit" class="btn btn-primary">Send</button>
+    </div>
+</form>
+<router-outlet></router-outlet>

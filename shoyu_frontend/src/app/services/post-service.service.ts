@@ -13,13 +13,13 @@ export class PostServiceService {
   baseApiUrl: string = environment.baseApiUrl;
   constructor(private http: HttpClient) { }
 
-  createPost(createPostRequest: Post): Observable<Post[]>{
-    return this.http.post<Post>(`${this.baseApiUrl}`, createPostRequest)
+  createPost(createPostRequest: Post): Observable<Post>{
+    return this.http.post<Post>(`${this.baseApiUrl}/posts`, createPostRequest)
     .pipe(
       map((response: any) => response.data)
     )
   }
   listPosts(): Observable<Post[]>{
-    return this.http.get<Post[]>(`${this.baseApiUrl}`)
+    return this.http.get<Post[]>(`${this.baseApiUrl}/posts`)
   }
 }

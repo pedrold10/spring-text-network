@@ -13,6 +13,6 @@ export class UserServiceService {
   constructor(private http: HttpClient) { }
 
   listUsers(): Observable<User[]>{
-    return this.http.get<User[]>(`${this.baseApiUrl}`)
+    return this.http.get<User[]>(`${this.baseApiUrl}/users/`)
   }
 }

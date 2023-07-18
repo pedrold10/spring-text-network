@@ -3,6 +3,7 @@ import { environment } from 'environments/environment';
 import { Observable, map } from 'rxjs';
 import { Post } from '../models/Post';
 import { HttpClient } from '@angular/common/http';
+import { User } from '../models/User';
 
 @Injectable({
   providedIn: 'root'
@@ -17,5 +18,8 @@ export class PostServiceService {
     .pipe(
       map((response: any) => response.data)
     )
+  }
+  listPosts(): Observable<Post[]>{
+    return this.http.get<Post[]>(`${this.baseApiUrl}`)
   }
 }

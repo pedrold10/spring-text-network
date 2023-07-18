@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Post } from 'src/app/models/Post';
 import { User } from 'src/app/models/User';
 import { PostServiceService } from 'src/app/services/post-service.service';
+import { UserServiceService } from 'src/app/services/user-service.service';
 
 @Component({
   selector: 'app-create-post',
@@ -11,20 +12,7 @@ import { PostServiceService } from 'src/app/services/post-service.service';
 })
 export class CreatePostComponent {
 
-  users: User[] = [
-    {
-      id: 1,
-      userName: "gold10",
-      name: "Gabriel",
-      followers: 99
-    },
-    {
-      id: 2,
-      userName: "pedroldZ",
-      name: "Pedro",
-      followers: 99
-    }
-  ]
+  users: User[] = []
 
   createPostRequest: Post = {
     postId: 0,
@@ -38,6 +26,7 @@ export class CreatePostComponent {
   }
 
   constructor(private postService: PostServiceService,
+    private userService: UserServiceService,
     private router: Router) { }
 
   createPost(){
@@ -58,4 +47,16 @@ export class CreatePostComponent {
     )
   }
 
+
+
+  listUsers(): void{
+    this.userService.listUsers().subscribe(
+      (users) => {
+        this.users = users;
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
+  }
 }

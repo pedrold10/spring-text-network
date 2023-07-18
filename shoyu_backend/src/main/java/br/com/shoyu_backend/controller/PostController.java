@@ -1,7 +1,6 @@
 package br.com.shoyu_backend.controller;
 
 import br.com.shoyu_backend.model.entities.Post;
-import br.com.shoyu_backend.model.entities.User;
 import br.com.shoyu_backend.model.services.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +22,7 @@ public class PostController{
         return postService.listPost();
     }
 
-    @RequestMapping(value = "/{id}/posts", method = RequestMethod.GET)
+    @RequestMapping(value = "/users/{id}/posts", method = RequestMethod.GET)
     public List<Post> postsPorId(@PathVariable Long id){
         return postService.postPorUserID(id);
     }

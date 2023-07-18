@@ -1,5 +1,6 @@
 package br.com.shoyu_backend.model.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,11 +19,12 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long postId;
 
-    @ManyToOne
-    @JoinColumn(name = "id_user")
-    private User user;
 
     @Size(max = 300)
     private String content;
 
+    @ManyToOne
+    @JoinColumn(name = "id_user")
+    @JsonBackReference
+    private User user;
 }

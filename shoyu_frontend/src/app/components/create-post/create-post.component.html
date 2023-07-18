@@ -1,9 +1,7 @@
 <form #form="ngForm" (ngSubmit)="createPost()" class="post-form row m-5">
     <div class="col-sm-6">
-        <select *ngFor="let user of users" 
-        [(ngModel)]="createPostRequest.user.id" name="selectedUser" id="">
-            <option value="{{user.id}}">{{user.userName}}</option>
-                
+        <select *ngFor="let user of users" [(ngModel)]="createPostRequest.user.id" name="selectedUser" id="">
+            <option>{{user.userName}}</option>                
         </select>
         <textarea [(ngModel)]="createPostRequest.content" name="content" class="form-control"></textarea>
         <button type="submit" class="btn btn-primary">Send</button>
